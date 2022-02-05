@@ -8,16 +8,16 @@ package info5100.Beans;
 import java.util.Date;
 
 public class ServiceRecord {
-    private Date date;
+    private String date;
     private float mileage;
     private String description;
     private float cost;
     private String company;
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

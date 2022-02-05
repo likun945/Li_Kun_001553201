@@ -6,7 +6,8 @@
 package info5100.Beans;
 
 import info5100.Beans.ServiceRecord;
-import java.awt.List;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Car {
     private String brand;
@@ -22,7 +23,7 @@ public class Car {
     private String ownerDriverLicense;
     private int ownerSocialSecurityNumber;
     private String ownerAddress;
-    private List serviceRecord;
+    private ArrayList<ServiceRecord> serviceRecord;
     private String warrantyYear;
     private String photo; // picture address
 //    private Owner owner;
@@ -91,11 +92,11 @@ public class Car {
         this.licensePlates = licensePlates;
     }
 
-    public List getServiceRecord() {
+    public ArrayList<ServiceRecord> getServiceRecord() {
         return serviceRecord;
     }
 
-    public void setServiceRecord(List serviceRecord) {
+    public void setServiceRecord(ArrayList<ServiceRecord> serviceRecord) {
         this.serviceRecord = serviceRecord;
     }
 
