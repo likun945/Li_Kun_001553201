@@ -12,8 +12,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
+import info5100.Utils.Verifier;
+import java.awt.Component;
 import java.util.Collection;
 import java.util.Map;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -56,7 +61,7 @@ public class container extends javax.swing.JFrame {
         addressLabel = new javax.swing.JLabel();
         socialSecurityNumberTextField = new javax.swing.JTextField();
         emailAddressesTextField = new javax.swing.JTextField();
-        telephoneNumbersTextField = new javax.swing.JTextField();
+        telephoneNumberTextField = new javax.swing.JTextField();
         driverLicenseLabel = new javax.swing.JLabel();
         modelTextField = new javax.swing.JTextField();
         socialSecurityNumberLabel = new javax.swing.JLabel();
@@ -67,8 +72,8 @@ public class container extends javax.swing.JFrame {
         engineNoTextField = new javax.swing.JTextField();
         nextButton = new javax.swing.JButton();
         seatsNumberTextField = new javax.swing.JTextField();
-        licensePlateLabel = new javax.swing.JLabel();
-        warrantyLabel = new javax.swing.JLabel();
+        licensePlatesLabel = new javax.swing.JLabel();
+        warrantyYearLabel = new javax.swing.JLabel();
         licensePlatesTextField = new javax.swing.JTextField();
         warrantyYearTextField = new javax.swing.JTextField();
         photoLabel = new javax.swing.JLabel();
@@ -155,6 +160,7 @@ public class container extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Owner Information");
 
+        nameLabel.setLabelFor(nameTextField);
         nameLabel.setText("Name");
 
         nameTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -163,10 +169,13 @@ public class container extends javax.swing.JFrame {
             }
         });
 
+        telephoneNumberLabel.setLabelFor(telephoneNumberTextField);
         telephoneNumberLabel.setText("TelePhone Number");
 
+        emailAddressesLabel.setLabelFor(emailAddressesTextField);
         emailAddressesLabel.setText("Email Addresses");
 
+        addressLabel.setLabelFor(addressTextField);
         addressLabel.setText("Address");
 
         socialSecurityNumberTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -175,16 +184,19 @@ public class container extends javax.swing.JFrame {
             }
         });
 
-        telephoneNumbersTextField.addActionListener(new java.awt.event.ActionListener() {
+        telephoneNumberTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telephoneNumbersTextFieldActionPerformed(evt);
+                telephoneNumberTextFieldActionPerformed(evt);
             }
         });
 
+        driverLicenseLabel.setLabelFor(driverLicenseTextField);
         driverLicenseLabel.setText("Driver License");
 
+        socialSecurityNumberLabel.setLabelFor(socialSecurityNumberTextField);
         socialSecurityNumberLabel.setText("Social Security Number");
 
+        seatsNumberLabel.setLabelFor(seatsNumberTextField);
         seatsNumberLabel.setText("Seats Number");
 
         driverLicenseTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -212,16 +224,20 @@ public class container extends javax.swing.JFrame {
             }
         });
 
-        licensePlateLabel.setText("License Plates");
+        licensePlatesLabel.setLabelFor(licensePlatesTextField);
+        licensePlatesLabel.setText("License Plates");
 
-        warrantyLabel.setText("Warranty Year");
+        warrantyYearLabel.setLabelFor(warrantyYearTextField);
+        warrantyYearLabel.setText("Warranty Year");
 
+        photoLabel.setLabelFor(photoTextField);
         photoLabel.setText("Photo");
 
         jLabel1.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Basic Information");
 
+        brandLabel.setLabelFor(brandTextField);
         brandLabel.setText("Brand");
 
         brandTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -230,12 +246,16 @@ public class container extends javax.swing.JFrame {
             }
         });
 
+        modelLabel.setLabelFor(modelTextField);
         modelLabel.setText("Model");
 
+        yearLabel.setLabelFor(yearTextField);
         yearLabel.setText("Year");
 
+        engineNoLabel.setLabelFor(engineNoTextField);
         engineNoLabel.setText("Engine No");
 
+        colorLabel.setLabelFor(colorTextField);
         colorLabel.setText("Color");
 
         photoTextField.setEditable(false);
@@ -315,7 +335,7 @@ public class container extends javax.swing.JFrame {
                         .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(photoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(engineNoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(licensePlateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(licensePlatesLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                             .addComponent(yearLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(modelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(brandLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -330,7 +350,7 @@ public class container extends javax.swing.JFrame {
                                     .addComponent(yearTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(warrantyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(warrantyYearLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(colorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(seatsNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -353,7 +373,7 @@ public class container extends javax.swing.JFrame {
                             .addComponent(nameTextField)
                             .addGroup(card1Layout.createSequentialGroup()
                                 .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(telephoneNumbersTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(telephoneNumberTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(emailAddressesTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,8 +455,8 @@ public class container extends javax.swing.JFrame {
                     .addComponent(seatsNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(licensePlateLabel)
-                    .addComponent(warrantyLabel)
+                    .addComponent(licensePlatesLabel)
+                    .addComponent(warrantyYearLabel)
                     .addComponent(licensePlatesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(warrantyYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -453,7 +473,7 @@ public class container extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telephoneNumberLabel)
-                    .addComponent(telephoneNumbersTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telephoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(driverLicenseLabel)
                     .addComponent(driverLicenseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -802,7 +822,7 @@ public class container extends javax.swing.JFrame {
         data.setPhoto(photoTextField.getText());
         data.setOwnerAddress(addressTextField.getText());
         data.setOwnerDriverLicense(driverLicenseTextField.getText());
-        data.setOwnerTelephoneNumber(telephoneNumbersTextField.getText());
+        data.setOwnerTelephoneNumber(telephoneNumberTextField.getText());
         data.setOwnerName(nameTextField.getText());
         data.setOwnerEmail(emailAddressesTextField.getText());
         data.setOwnerSocialSecurityNumber(Integer.parseInt(socialSecurityNumberTextField.getText()));
@@ -839,25 +859,63 @@ public class container extends javax.swing.JFrame {
         socialSecurityNumberTextField1.setText(String.valueOf(data.getOwnerSocialSecurityNumber()));
         addressTextField1.setText(data.getOwnerAddress());
     }
-    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        // TODO add your handling code here:
-        java.awt.CardLayout cardLayout = (java.awt.CardLayout) cardPanel.getLayout();
-        getData(car);
-        setData(car);
-        cardLayout.show(cardPanel, "card2");
-        DefaultTableModel model = (DefaultTableModel) serviceRecordTable.getModel();
-        Gson g = new Gson();
-        for (int i = 0; i < car.getServiceRecord().size(); i++) {
-            String json = g.toJson(list.get(i));
-            System.out.println(json);
-            Map row = g.fromJson(json, Map.class);
-            Collection<Object> list = row.values();
-            Object[] record = list.toArray();
-            model.addRow(record);
+
+    public boolean validateData() {
+        Verifier iv = new Verifier();
+        Component[] notEmptyComponents = {
+            brandLabel, modelLabel, yearLabel, colorLabel, engineNoLabel, seatsNumberLabel, licensePlatesLabel, warrantyYearLabel, photoLabel,
+            nameLabel, telephoneNumberLabel, driverLicenseLabel, emailAddressesLabel, socialSecurityNumberLabel, addressLabel
+        };
+        for (int i = 0; i < notEmptyComponents.length; i++) {
+            JLabel label = (JLabel) notEmptyComponents[i];
+            JTextField field = (JTextField) label.getLabelFor();
+            if (!iv.verify(field)) {
+                String str = label.getText();
+                JOptionPane.showMessageDialog(null, str.substring(0, str.length()) + " cannot be null", "Warning", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
         }
 
-    }//GEN-LAST:event_nextButtonActionPerformed
+        Component[] numberComponents = {
+            yearLabel, warrantyYearLabel, seatsNumberLabel, telephoneNumberLabel, socialSecurityNumberLabel
+        }; // these fields should be number
+        for (int i = 0; i < numberComponents.length; i++) {
+            JLabel label = (JLabel) numberComponents[i];
+            JTextField field = (JTextField) label.getLabelFor();
+            if (!iv.verifyNumber(field)) {
+                String str = label.getText();
+                JOptionPane.showMessageDialog(null, str.substring(0, str.length()) + " should be number", "Warning", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+        }
 
+        JLabel emailComponent = emailAddressesLabel; // this field should match email regex
+        JTextField field = (JTextField) emailComponent.getLabelFor();
+        if (!iv.verifyEmail(field)) {
+            JOptionPane.showMessageDialog(null, "email format is incorrect", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        // TODO add your handling code here:
+        if (validateData()) {
+            java.awt.CardLayout cardLayout = (java.awt.CardLayout) cardPanel.getLayout();
+            getData(car);
+            setData(car);
+            cardLayout.show(cardPanel, "card2");
+            DefaultTableModel model = (DefaultTableModel) serviceRecordTable.getModel();
+            Gson g = new Gson();
+            for (int i = 0; i < car.getServiceRecord().size(); i++) {
+                String json = g.toJson(list.get(i));
+                System.out.println(json);
+                Map row = g.fromJson(json, Map.class);
+                Collection<Object> list = row.values();
+                Object[] record = list.toArray();
+                model.addRow(record);
+            }
+    }//GEN-LAST:event_nextButtonActionPerformed
+    }
     private void brandTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_brandTextFieldActionPerformed
@@ -892,9 +950,9 @@ public class container extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_seatsNumberTextFieldActionPerformed
 
-    private void telephoneNumbersTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telephoneNumbersTextFieldActionPerformed
+    private void telephoneNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telephoneNumberTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_telephoneNumbersTextFieldActionPerformed
+    }//GEN-LAST:event_telephoneNumberTextFieldActionPerformed
 
     private void socialSecurityNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_socialSecurityNumberTextFieldActionPerformed
         // TODO add your handling code here:
@@ -1040,8 +1098,8 @@ public class container extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel licensePlateLabel;
     private javax.swing.JLabel licensePlateLabel1;
+    private javax.swing.JLabel licensePlatesLabel;
     private javax.swing.JTextField licensePlatesTextField;
     private javax.swing.JTextField licensePlatesTextField1;
     private javax.swing.JLabel mileageLabel;
@@ -1072,10 +1130,10 @@ public class container extends javax.swing.JFrame {
     private javax.swing.JTextField socialSecurityNumberTextField1;
     private javax.swing.JLabel telephoneNumberLabel;
     private javax.swing.JLabel telephoneNumberLabel1;
+    private javax.swing.JTextField telephoneNumberTextField;
     private javax.swing.JTextField telephoneNumberTextField1;
-    private javax.swing.JTextField telephoneNumbersTextField;
-    private javax.swing.JLabel warrantyLabel;
     private javax.swing.JLabel warrantyLabel1;
+    private javax.swing.JLabel warrantyYearLabel;
     private javax.swing.JTextField warrantyYearTextField;
     private javax.swing.JTextField warrantyYearTextField1;
     private javax.swing.JLabel yearLabel;

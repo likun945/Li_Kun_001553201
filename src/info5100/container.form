@@ -75,7 +75,7 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="photoLabel" alignment="0" max="32767" attributes="0"/>
                                   <Component id="engineNoLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="licensePlateLabel" alignment="0" pref="145" max="32767" attributes="0"/>
+                                  <Component id="licensePlatesLabel" alignment="0" pref="145" max="32767" attributes="0"/>
                                   <Component id="yearLabel" alignment="0" max="32767" attributes="0"/>
                                   <Component id="modelLabel" alignment="1" max="32767" attributes="0"/>
                                   <Component id="brandLabel" alignment="0" max="32767" attributes="0"/>
@@ -92,7 +92,7 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="warrantyLabel" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                          <Component id="warrantyYearLabel" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
                                           <Component id="colorLabel" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                                           <Component id="seatsNumberLabel" min="-2" pref="92" max="-2" attributes="0"/>
                                       </Group>
@@ -122,7 +122,7 @@
                                   <Component id="nameTextField" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="telephoneNumbersTextField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="telephoneNumberTextField" alignment="0" max="32767" attributes="0"/>
                                           <Component id="emailAddressesTextField" alignment="0" pref="196" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -231,8 +231,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="licensePlateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="warrantyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="licensePlatesLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="warrantyYearLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="licensePlatesTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="warrantyYearTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -252,7 +252,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="telephoneNumberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="telephoneNumbersTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="telephoneNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="driverLicenseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="driverLicenseTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -319,6 +319,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="nameLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="nameTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Name"/>
               </Properties>
             </Component>
@@ -329,16 +332,25 @@
             </Component>
             <Component class="javax.swing.JLabel" name="telephoneNumberLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="telephoneNumberTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="TelePhone Number"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="emailAddressesLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="emailAddressesTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Email Addresses"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="addressLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="addressTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Address"/>
               </Properties>
             </Component>
@@ -349,13 +361,16 @@
             </Component>
             <Component class="javax.swing.JTextField" name="emailAddressesTextField">
             </Component>
-            <Component class="javax.swing.JTextField" name="telephoneNumbersTextField">
+            <Component class="javax.swing.JTextField" name="telephoneNumberTextField">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="telephoneNumbersTextFieldActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="telephoneNumberTextFieldActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="driverLicenseLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="driverLicenseTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Driver License"/>
               </Properties>
             </Component>
@@ -363,11 +378,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="socialSecurityNumberLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="socialSecurityNumberTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Social Security Number"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="seatsNumberLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="seatsNumberTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Seats Number"/>
               </Properties>
             </Component>
@@ -398,13 +419,19 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="seatsNumberTextFieldActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="licensePlateLabel">
+            <Component class="javax.swing.JLabel" name="licensePlatesLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="licensePlatesTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="License Plates"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="warrantyLabel">
+            <Component class="javax.swing.JLabel" name="warrantyYearLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="warrantyYearTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Warranty Year"/>
               </Properties>
             </Component>
@@ -414,6 +441,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="photoLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="photoTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Photo"/>
               </Properties>
             </Component>
@@ -428,6 +458,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="brandLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="brandTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Brand"/>
               </Properties>
             </Component>
@@ -438,21 +471,33 @@
             </Component>
             <Component class="javax.swing.JLabel" name="modelLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="modelTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Model"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="yearLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="yearTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Year"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="engineNoLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="engineNoTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Engine No"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="colorLabel">
               <Properties>
+                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="colorTextField"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Color"/>
               </Properties>
             </Component>
