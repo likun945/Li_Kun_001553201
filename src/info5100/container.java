@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
+import java.util.Collection;
+import java.util.Map;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +28,7 @@ public class container extends javax.swing.JFrame {
     public int added = 0;
     public ServiceRecord sr;
     public ArrayList<ServiceRecord> list = new ArrayList<>();
-    
+
     public container() {
         initComponents();
     }
@@ -96,7 +99,7 @@ public class container extends javax.swing.JFrame {
         countLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         card2 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        info = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         nameLabel1 = new javax.swing.JLabel();
@@ -115,7 +118,6 @@ public class container extends javax.swing.JFrame {
         yearTextField1 = new javax.swing.JTextField();
         addressTextField1 = new javax.swing.JTextField();
         engineNoTextField1 = new javax.swing.JTextField();
-        nextButton1 = new javax.swing.JButton();
         seatsNumberTextField1 = new javax.swing.JTextField();
         licensePlateLabel1 = new javax.swing.JLabel();
         warrantyLabel1 = new javax.swing.JLabel();
@@ -133,7 +135,7 @@ public class container extends javax.swing.JFrame {
         showPhotoLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        serviceRecordTable = new javax.swing.JTable();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -313,7 +315,7 @@ public class container extends javax.swing.JFrame {
                         .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(photoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(engineNoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(licensePlateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(licensePlateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                             .addComponent(yearLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(modelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(brandLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -543,13 +545,6 @@ public class container extends javax.swing.JFrame {
 
         engineNoTextField1.setEditable(false);
 
-        nextButton1.setText("Next");
-        nextButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextButton1ActionPerformed(evt);
-            }
-        });
-
         seatsNumberTextField1.setEditable(false);
 
         licensePlateLabel1.setText("License Plates");
@@ -596,10 +591,10 @@ public class container extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(105, 105, 105))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(photoLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -607,61 +602,59 @@ public class container extends javax.swing.JFrame {
                         .addGap(105, 105, 105))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameLabel1)
-                            .addComponent(addressLabel1)
-                            .addComponent(emailAddressesLabel1)
-                            .addComponent(telephoneNumberLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameTextField1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameLabel1)
+                                    .addComponent(addressLabel1)
+                                    .addComponent(emailAddressesLabel1)
+                                    .addComponent(telephoneNumberLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameTextField1)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(telephoneNumberTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(emailAddressesTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(socialSecurityNumberLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(socialSecurityNumberTextField1))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(driverLicenseLabel1)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(driverLicenseTextField1))))
+                                    .addComponent(addressTextField1)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(telephoneNumberTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(emailAddressesTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(brandLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(modelLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(yearLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(engineNoLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(licensePlateLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(socialSecurityNumberLabel1)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(yearTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                            .addComponent(engineNoTextField1)
+                                            .addComponent(licensePlatesTextField1))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(socialSecurityNumberTextField1))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(driverLicenseLabel1)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(seatsNumberLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(warrantyLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(colorLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
-                                        .addComponent(driverLicenseTextField1))))
-                            .addComponent(addressTextField1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nextButton1)
-                        .addGap(281, 281, 281))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(brandLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modelLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(yearLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(engineNoLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(licensePlateLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(yearTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                                    .addComponent(engineNoTextField1)
-                                    .addComponent(licensePlatesTextField1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(seatsNumberLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(warrantyLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(colorLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(colorTextField1)
-                                    .addComponent(seatsNumberTextField1)
-                                    .addComponent(warrantyYearTextField1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(brandTextField1)
-                                .addGap(74, 74, 74))
-                            .addComponent(modelTextField1))))
-                .addContainerGap())
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(colorTextField1)
+                                            .addComponent(seatsNumberTextField1)
+                                            .addComponent(warrantyYearTextField1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(brandTextField1)
+                                        .addGap(74, 74, 74))
+                                    .addComponent(modelTextField1))))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -720,9 +713,7 @@ public class container extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addressTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addressLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(nextButton1)
-                .addContainerGap())
+                .addGap(55, 55, 55))
         );
 
         //try {
@@ -732,9 +723,9 @@ public class container extends javax.swing.JFrame {
             //}catch(IOException io) {
             //}
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        info.addTab("Info", jPanel1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        serviceRecordTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -743,47 +734,55 @@ public class container extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(serviceRecordTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        info.addTab("ServiceRecord", jPanel2);
 
         javax.swing.GroupLayout card2Layout = new javax.swing.GroupLayout(card2);
         card2.setLayout(card2Layout);
         card2Layout.setHorizontalGroup(
             card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 657, Short.MAX_VALUE)
+            .addGap(0, 665, Short.MAX_VALUE)
             .addGroup(card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card2Layout.createSequentialGroup()
-                    .addContainerGap(28, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(29, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(info, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         card2Layout.setVerticalGroup(
             card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 746, Short.MAX_VALUE)
             .addGroup(card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(card2Layout.createSequentialGroup()
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 16, Short.MAX_VALUE)))
         );
+
+        info.getAccessibleContext().setAccessibleName("info");
 
         cardPanel.add(card2, "card2");
 
@@ -815,7 +814,7 @@ public class container extends javax.swing.JFrame {
     public void setServiceRecord() {
         System.out.println(car.getServiceRecord());
     }
-    
+
     public void setData(Car data) {
         brandTextField1.setText(data.getBrand());
         modelTextField1.setText(data.getModel());
@@ -846,6 +845,17 @@ public class container extends javax.swing.JFrame {
         getData(car);
         setData(car);
         cardLayout.show(cardPanel, "card2");
+        DefaultTableModel model = (DefaultTableModel) serviceRecordTable.getModel();
+        Gson g = new Gson();
+        for (int i = 0; i < car.getServiceRecord().size(); i++) {
+            String json = g.toJson(list.get(i));
+            System.out.println(json);
+            Map row = g.fromJson(json, Map.class);
+            Collection<Object> list = row.values();
+            Object[] record = list.toArray();
+            model.addRow(record);
+        }
+
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void brandTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandTextFieldActionPerformed
@@ -869,10 +879,6 @@ public class container extends javax.swing.JFrame {
     private void driverLicenseTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_driverLicenseTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_driverLicenseTextField1ActionPerformed
-
-    private void nextButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nextButton1ActionPerformed
 
     private void brandTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandTextField1ActionPerformed
         // TODO add your handling code here:
@@ -917,8 +923,6 @@ public class container extends javax.swing.JFrame {
         sr.setDescription(descriptionTextArea.getText());
         sr.setMileage(Float.parseFloat(mileageTextField.getText()));
         list.add(sr);
-        Gson g = new Gson();
-        System.out.println(g.toJson(list));
         disableServiceRecordFields();
         clearServiceRecordFields();
         countLabel.setText(String.valueOf(++added));
@@ -930,7 +934,7 @@ public class container extends javax.swing.JFrame {
         costTextField.setEditable(true);
         descriptionTextArea.setEditable(true);
     }
-    
+
     public void clearServiceRecordFields() {
         dateTextField.setText("");
         mileageTextField.setText("");
@@ -938,14 +942,14 @@ public class container extends javax.swing.JFrame {
         costTextField.setText("");
         descriptionTextArea.setText("");
     }
-    
+
     public void disableServiceRecordFields() {
         dateTextField.setEditable(false);
         mileageTextField.setEditable(false);
         companyTextField.setEditable(false);
         costTextField.setEditable(false);
         descriptionTextArea.setEditable(false);
-        
+
     }
 
     /**
@@ -1023,6 +1027,7 @@ public class container extends javax.swing.JFrame {
     private javax.swing.JLabel engineNoLabel1;
     private javax.swing.JTextField engineNoTextField;
     private javax.swing.JTextField engineNoTextField1;
+    private javax.swing.JTabbedPane info;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1035,8 +1040,6 @@ public class container extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel licensePlateLabel;
     private javax.swing.JLabel licensePlateLabel1;
     private javax.swing.JTextField licensePlatesTextField;
@@ -1052,7 +1055,6 @@ public class container extends javax.swing.JFrame {
     private javax.swing.JTextField nameTextField;
     private javax.swing.JTextField nameTextField1;
     private javax.swing.JButton nextButton;
-    private javax.swing.JButton nextButton1;
     private javax.swing.JLabel photoLabel;
     private javax.swing.JLabel photoLabel1;
     private javax.swing.JTextField photoTextField;
@@ -1061,6 +1063,7 @@ public class container extends javax.swing.JFrame {
     private javax.swing.JLabel seatsNumberLabel1;
     private javax.swing.JTextField seatsNumberTextField;
     private javax.swing.JTextField seatsNumberTextField1;
+    private javax.swing.JTable serviceRecordTable;
     private javax.swing.JLabel showCountLabel;
     private javax.swing.JLabel showPhotoLabel;
     private javax.swing.JLabel socialSecurityNumberLabel;
