@@ -47,7 +47,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-28,0,0,3,-104"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,113,0,0,2,-74"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
@@ -67,108 +67,104 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" max="32767" attributes="0"/>
-                          <Component id="jLabel10" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="photoLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="engineNoLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="licensePlatesLabel" alignment="0" pref="145" max="32767" attributes="0"/>
-                                  <Component id="yearLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="modelLabel" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="brandLabel" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="modelTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="brandTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="licensePlatesTextField" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="engineNoTextField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="yearTextField" alignment="0" pref="196" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="warrantyYearLabel" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                                          <Component id="colorLabel" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
-                                          <Component id="seatsNumberLabel" min="-2" pref="92" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="colorTextField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="seatsNumberTextField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="warrantyYearTextField" alignment="1" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="photoTextField" min="-2" pref="425" max="-2" attributes="0"/>
-                                      <EmptySpace pref="9" max="32767" attributes="0"/>
-                                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="emailAddressesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="telephoneNumberLabel" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="nameTextField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel1" max="32767" attributes="0"/>
+                                  <Component id="jLabel10" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="telephoneNumberTextField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="emailAddressesTextField" alignment="0" pref="196" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="socialSecurityNumberLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="socialSecurityNumberTextField" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="driverLicenseLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="driverLicenseTextField" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Component id="addressTextField" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="jLabel12" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="DateLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="companyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="photoLabel" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="engineNoLabel" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="licensePlatesLabel" alignment="0" pref="157" max="32767" attributes="0"/>
+                                          <Component id="yearLabel" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="modelLabel" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="brandLabel" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="companyTextField" pref="125" max="32767" attributes="0"/>
-                                          <Component id="dateTextField" max="32767" attributes="0"/>
+                                          <Component id="modelTextField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="brandTextField" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="licensePlatesTextField" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="engineNoTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="yearTextField" alignment="0" pref="196" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="warrantyYearLabel" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                                                  <Component id="colorLabel" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                                                  <Component id="seatsNumberLabel" min="-2" pref="92" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="colorTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="seatsNumberTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="warrantyYearTextField" alignment="1" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="photoTextField" min="-2" pref="425" max="-2" attributes="0"/>
+                                              <EmptySpace pref="9" max="32767" attributes="0"/>
+                                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="addButton" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="emailAddressesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="telephoneNumberLabel" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nameTextField" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="telephoneNumberTextField" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="emailAddressesTextField" alignment="0" pref="196" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="socialSecurityNumberLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="socialSecurityNumberTextField" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="driverLicenseLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="driverLicenseTextField" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Component id="addressTextField" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="369" max="32767" attributes="0"/>
-                                      <Component id="nextButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel12" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="DateLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="companyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="companyTextField" pref="125" max="32767" attributes="0"/>
+                                                  <Component id="dateTextField" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="addButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="showCountLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
@@ -189,10 +185,9 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="showCountLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="countLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
+                              <Component id="nextButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -292,17 +287,14 @@
                                   <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="saveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="showCountLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="descriptionTextarea" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="showCountLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="countLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="nextButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace pref="150" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -602,12 +594,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="showCountLabel">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="&#x5b8b;&#x4f53;" size="14" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Added service record count: "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="countLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="saveButton">
@@ -630,7 +620,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="665" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="677" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -641,11 +631,11 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="746" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="750" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="info" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -674,14 +664,6 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel11" min="-2" pref="543" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel2" min="-2" pref="543" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="photoLabel1" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -760,6 +742,13 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel11" alignment="0" min="-2" pref="543" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" min="-2" pref="543" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="105" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
