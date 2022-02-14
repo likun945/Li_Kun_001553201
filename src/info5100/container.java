@@ -37,7 +37,7 @@ public class container extends javax.swing.JFrame {
     public int added = 0;
     public ServiceRecord sr;
     public ArrayList<ServiceRecord> list = new ArrayList<>();
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public container() {
         initComponents();
@@ -325,7 +325,7 @@ public class container extends javax.swing.JFrame {
             }
         });
 
-        dateTextField.setDateFormatString("yyyy-M-dd");
+        dateTextField.setDateFormatString("yyyy-MM-dd");
         dateTextField.setEnabled(false);
 
         javax.swing.GroupLayout card1Layout = new javax.swing.GroupLayout(card1);
@@ -920,7 +920,6 @@ public class container extends javax.swing.JFrame {
                 return false;
             }
         }
-
         Component[] numberComponents = {
             yearLabel, warrantyYearLabel, seatsNumberLabel, telephoneNumberLabel, socialSecurityNumberLabel
         }; // these fields should be number
@@ -935,12 +934,15 @@ public class container extends javax.swing.JFrame {
         }
         if (socialSecurityNumberTextField.getText().length() != 9) {
             JOptionPane.showMessageDialog(null, "Social Security Number should be 9 digit number", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
         }
         if (yearTextField.getText().length() != 4) {
             JOptionPane.showMessageDialog(null, "Year should be 4 digit number", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
         }
         if (warrantyYearTextField.getText().length() != 4) {
             JOptionPane.showMessageDialog(null, "Warranty year should be 9 digit number", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
         }
         JLabel emailComponent = emailAddressesLabel; // this field should match email regex
         JTextField field = (JTextField) emailComponent.getLabelFor();
