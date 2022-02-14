@@ -19,7 +19,7 @@ public class ShowImage {
     public ImageIcon getImage(String filePath) throws IOException {
         System.out.println(filePath);
         if (filePath == null || filePath.length() == 0 || filePath.equals("")) {
-            filePath = "C:\\Users\\Administrator\\Desktop\\empty.jpg";
+            filePath = "C:\\Users\\Administrator\\Desktop\\cars\\empty.jpg";
         }
         final BufferedImage image = ImageIO.read(new File(filePath));
        Image scaledImage = image.getScaledInstance(500, 300, Image.SCALE_DEFAULT);

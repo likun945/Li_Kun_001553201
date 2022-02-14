@@ -20,7 +20,7 @@ public class Verifier {
                 !field.getText().trim().isEmpty();
     }
     public boolean verifyNumber(JTextField field) {
-        return field.getText().matches("[0-9]+");
+        return field.getText().matches("[0-9.]+");
     }
     public boolean verifyEmail(JTextField field) {
         /*

@@ -14,7 +14,11 @@ import java.util.List;
 import com.google.gson.Gson;
 import info5100.Utils.Verifier;
 import java.awt.Component;
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,6 +37,7 @@ public class container extends javax.swing.JFrame {
     public int added = 0;
     public ServiceRecord sr;
     public ArrayList<ServiceRecord> list = new ArrayList<>();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 
     public container() {
         initComponents();
@@ -90,7 +95,6 @@ public class container extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         DateLabel = new javax.swing.JLabel();
         mileageLabel = new javax.swing.JLabel();
-        dateTextField = new javax.swing.JTextField();
         mileageTextField = new javax.swing.JTextField();
         costTextField = new javax.swing.JTextField();
         companyTextField = new javax.swing.JTextField();
@@ -102,6 +106,7 @@ public class container extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         showCountLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
+        dateTextField = new com.toedter.calendar.JDateChooser();
         card2 = new javax.swing.JPanel();
         info = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -149,11 +154,15 @@ public class container extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(700, 765));
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new java.awt.FlowLayout());
 
+        cardPanel.setPreferredSize(new java.awt.Dimension(677, 1050));
         cardPanel.setLayout(new java.awt.CardLayout());
+
+        card1.setPreferredSize(new java.awt.Dimension(672, 650));
 
         jLabel10.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -272,14 +281,8 @@ public class container extends javax.swing.JFrame {
 
         DateLabel.setText("Date");
 
+        mileageLabel.setLabelFor(mileageTextField);
         mileageLabel.setText("Mileage");
-
-        dateTextField.setEditable(false);
-        dateTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateTextFieldActionPerformed(evt);
-            }
-        });
 
         mileageTextField.setEditable(false);
 
@@ -292,8 +295,10 @@ public class container extends javax.swing.JFrame {
 
         companyTextField.setEditable(false);
 
+        costLabel.setLabelFor(costTextField);
         costLabel.setText("Cost");
 
+        companyLabel.setLabelFor(companyTextField);
         companyLabel.setText("Company");
 
         descriptionLabel.setText("Description");
@@ -311,7 +316,7 @@ public class container extends javax.swing.JFrame {
         });
 
         showCountLabel.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
-        showCountLabel.setText("Added service record count: ");
+        showCountLabel.setText("Added service record count: 0");
 
         saveButton.setText("Save");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -319,6 +324,9 @@ public class container extends javax.swing.JFrame {
                 saveButtonActionPerformed(evt);
             }
         });
+
+        dateTextField.setDateFormatString("yyyy-M-dd");
+        dateTextField.setEnabled(false);
 
         javax.swing.GroupLayout card1Layout = new javax.swing.GroupLayout(card1);
         card1.setLayout(card1Layout);
@@ -332,18 +340,17 @@ public class container extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(card1Layout.createSequentialGroup()
-                                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(photoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(engineNoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(licensePlatesLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(modelLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(yearLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(modelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(brandLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(engineNoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(licensePlatesLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                    .addComponent(photoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(brandLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(modelTextField)
-                                    .addComponent(brandTextField)
-                                    .addGroup(card1Layout.createSequentialGroup()
+                                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(modelTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, card1Layout.createSequentialGroup()
                                         .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(licensePlatesTextField)
                                             .addComponent(engineNoTextField, javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,13 +362,15 @@ public class container extends javax.swing.JFrame {
                                             .addComponent(seatsNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(colorTextField)
+                                            .addComponent(colorTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                                             .addComponent(seatsNumberTextField)
                                             .addComponent(warrantyYearTextField, javax.swing.GroupLayout.Alignment.TRAILING)))
                                     .addGroup(card1Layout.createSequentialGroup()
-                                        .addComponent(photoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                                        .addComponent(jButton1))))
+                                        .addComponent(photoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton1)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(brandTextField)))
                             .addGroup(card1Layout.createSequentialGroup()
                                 .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nameLabel)
@@ -396,7 +405,7 @@ public class container extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(companyTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                                            .addComponent(dateTextField)))
+                                            .addComponent(dateTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(card1Layout.createSequentialGroup()
                                         .addComponent(addButton)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -483,33 +492,41 @@ public class container extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DateLabel)
-                    .addComponent(mileageLabel)
-                    .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mileageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(costTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(costLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(card1Layout.createSequentialGroup()
                         .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(companyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(companyLabel)
-                            .addComponent(descriptionLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addButton)
-                            .addComponent(saveButton))
+                            .addComponent(DateLabel)
+                            .addComponent(mileageLabel)
+                            .addComponent(mileageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(costLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(showCountLabel))
-                    .addComponent(descriptionTextarea, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(nextButton)
-                .addContainerGap(150, Short.MAX_VALUE))
+                        .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(card1Layout.createSequentialGroup()
+                                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(companyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(companyLabel)
+                                    .addComponent(descriptionLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(card1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(addButton)
+                                    .addComponent(saveButton))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(showCountLabel))
+                            .addComponent(descriptionTextarea, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nextButton))
+                    .addComponent(dateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(494, Short.MAX_VALUE))
         );
 
         cardPanel.add(card1, "card1");
+
+        card2.setPreferredSize(new java.awt.Dimension(677, 850));
+
+        info.setPreferredSize(new java.awt.Dimension(665, 830));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(658, 750));
 
         jLabel11.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -648,10 +665,10 @@ public class container extends javax.swing.JFrame {
                                             .addComponent(licensePlatesTextField1))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(seatsNumberLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(warrantyLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(colorLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
+                                            .addComponent(colorLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(seatsNumberLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(colorTextField1)
                                             .addComponent(seatsNumberTextField1)
@@ -665,7 +682,7 @@ public class container extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(105, Short.MAX_VALUE))))
+                        .addContainerGap(107, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -736,6 +753,8 @@ public class container extends javax.swing.JFrame {
 
         info.addTab("Info", jPanel1);
 
+        jPanel2.setPreferredSize(new java.awt.Dimension(660, 851));
+
         serviceRecordTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -769,7 +788,7 @@ public class container extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
         );
 
         info.addTab("ServiceRecord", jPanel2);
@@ -786,11 +805,11 @@ public class container extends javax.swing.JFrame {
         );
         card2Layout.setVerticalGroup(
             card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 1050, Short.MAX_VALUE)
             .addGroup(card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(card2Layout.createSequentialGroup()
                     .addComponent(info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 20, Short.MAX_VALUE)))
+                    .addGap(0, 220, Short.MAX_VALUE)))
         );
 
         info.getAccessibleContext().setAccessibleName("info");
@@ -851,6 +870,41 @@ public class container extends javax.swing.JFrame {
         addressTextField1.setText(data.getOwnerAddress());
     }
 
+    public boolean validateServiceRecord() {
+
+        if (dateTextField.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Date cannot be null", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        Verifier iv = new Verifier();
+        Component[] notEmptyComponents = {
+            mileageLabel, companyLabel, costLabel
+        };
+        for (int i = 0; i < notEmptyComponents.length; i++) {
+            JLabel label = (JLabel) notEmptyComponents[i];
+            JTextField field = (JTextField) label.getLabelFor();
+            if (!iv.verify(field)) {
+                String str = label.getText();
+                JOptionPane.showMessageDialog(null, str.substring(0, str.length()) + " cannot be null", "Warning", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+        }
+        Component[] numberComponents = {
+            mileageLabel, costLabel
+        }; // these fields should be number
+        for (int i = 0; i < numberComponents.length; i++) {
+            JLabel label = (JLabel) numberComponents[i];
+            JTextField field = (JTextField) label.getLabelFor();
+            if (!iv.verifyNumber(field)) {
+                String str = label.getText();
+                JOptionPane.showMessageDialog(null, str.substring(0, str.length()) + " should be number", "Warning", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+        }
+//        System.out.println(dateTextField.getDate());
+        return true;
+    }
+
     public boolean validateData() {
         Verifier iv = new Verifier();
         Component[] notEmptyComponents = {
@@ -879,7 +933,15 @@ public class container extends javax.swing.JFrame {
                 return false;
             }
         }
-
+        if (socialSecurityNumberTextField.getText().length() != 9) {
+            JOptionPane.showMessageDialog(null, "Social Security Number should be 9 digit number", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        if (yearTextField.getText().length() != 4) {
+            JOptionPane.showMessageDialog(null, "Year should be 4 digit number", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        if (warrantyYearTextField.getText().length() != 4) {
+            JOptionPane.showMessageDialog(null, "Warranty year should be 9 digit number", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
         JLabel emailComponent = emailAddressesLabel; // this field should match email regex
         JTextField field = (JTextField) emailComponent.getLabelFor();
         if (!iv.verifyEmail(field)) {
@@ -953,31 +1015,39 @@ public class container extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_costTextFieldActionPerformed
 
-    private void dateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateTextFieldActionPerformed
-
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         enableServiceRecordFields();
         sr = new ServiceRecord();
 
     }//GEN-LAST:event_addButtonActionPerformed
-
+    public static boolean isNumeric(String str) {
+        String bigStr;
+        try {
+            bigStr = new BigDecimal(str).toString();
+        } catch (Exception e) {
+            return false;//异常 说明包含非数字。
+        }
+        return true;
+    }
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-        sr.setDate(dateTextField.getText());
-        sr.setCompany(companyTextField.getText());
-        sr.setCost(Float.parseFloat(costTextField.getText()));
-        sr.setDescription(descriptionTextArea.getText());
-        sr.setMileage(Float.parseFloat(mileageTextField.getText()));
-        list.add(sr);
-        disableServiceRecordFields();
-        clearServiceRecordFields();
-        showCountLabel.setText("Added service record count: "+String.valueOf(++added));
+
+        if (validateServiceRecord()) {
+            sr.setDate(dateFormat.format(dateTextField.getDate()));
+            sr.setCompany(companyTextField.getText());
+            sr.setCost(Float.parseFloat(costTextField.getText()));
+            sr.setDescription(descriptionTextArea.getText());
+            sr.setMileage(Float.parseFloat(mileageTextField.getText()));
+            list.add(sr);
+            disableServiceRecordFields();
+            clearServiceRecordFields();
+            showCountLabel.setText("Added service record count: " + String.valueOf(++added));
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
     public void enableServiceRecordFields() {
-        dateTextField.setEditable(true);
+        dateTextField.setEnabled(true);
+//        dateTextField.setEditable(true);
         mileageTextField.setEditable(true);
         companyTextField.setEditable(true);
         costTextField.setEditable(true);
@@ -985,7 +1055,7 @@ public class container extends javax.swing.JFrame {
     }
 
     public void clearServiceRecordFields() {
-        dateTextField.setText("");
+        dateTextField.setDate(null);
         mileageTextField.setText("");
         companyTextField.setText("");
         costTextField.setText("");
@@ -993,7 +1063,7 @@ public class container extends javax.swing.JFrame {
     }
 
     public void disableServiceRecordFields() {
-        dateTextField.setEditable(false);
+        dateTextField.setEnabled(false);
         mileageTextField.setEditable(false);
         companyTextField.setEditable(false);
         costTextField.setEditable(false);
@@ -1059,7 +1129,7 @@ public class container extends javax.swing.JFrame {
     private javax.swing.JTextField companyTextField;
     private javax.swing.JLabel costLabel;
     private javax.swing.JTextField costTextField;
-    private javax.swing.JTextField dateTextField;
+    private com.toedter.calendar.JDateChooser dateTextField;
     private javax.swing.JLabel descriptionLabel;
     private javax.swing.JTextArea descriptionTextArea;
     private javax.swing.JScrollPane descriptionTextarea;
